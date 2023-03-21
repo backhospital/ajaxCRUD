@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+ <mapper namespace="com.example.mapper.testMapper">
+     
+    <insert id="insertSample" parameterType="com.example.vo.SampleVO">
+        INSERT INTO sample (name, value) VALUES (#{name}, #{value})
+    </insert>
+    
+    <update id="updateSample" parameterType="com.example.vo.SampleVO">
+        UPDATE sample SET name=#{name}, value=#{value} WHERE idx=#{idx}
+    </update>
+    
+    <delete id="deleteSample" parameterType="int">
+        DELETE FROM sample WHERE idx=#{idx}
+    </delete>
+    
+    <select id="selectSampleList" resultType="com.example.vo.SampleVO">
+        SELECT idx, name, value FROM sample
+    </select>
+    
+    <select id="selectSample" resultType="com.example.vo.SampleVO" parameterType="int">
+        SELECT idx, name, value FROM sample WHERE idx=#{idx}
+    </select>
+    
+</mapper>
